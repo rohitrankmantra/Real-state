@@ -1,11 +1,10 @@
-import { Inter, Montserrat } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-sans',
 })
 
 export const metadata = {
@@ -34,7 +33,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
+      <body className={`${montserrat.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
