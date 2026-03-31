@@ -64,7 +64,7 @@ export default function ProjectShowcase() {
   };
 
   return (
-    <section className="py-24 bg-[#fdfaf5] overflow-hidden relative min-h-[800px] flex items-center">
+    <section className="py-24 bg-[#fdfaf5] overflow-hidden relative min-h-200 flex items-center">
       {/* Background Pattern - Dots */}
       <div className="absolute inset-0 pointer-events-none opacity-20" 
            style={{ backgroundImage: 'radial-gradient(#c5a07c 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -79,7 +79,7 @@ export default function ProjectShowcase() {
         </svg>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 relative z-10 w-full">
+      <div className="max-w-350 mx-auto px-6 md:px-12 lg:px-24 relative z-10 w-full">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
           {/* Left: Features List */}
@@ -121,7 +121,7 @@ export default function ProjectShowcase() {
 
           {/* Right: Image with Oval Overlay */}
           <div className="lg:w-1/2 w-full order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[550px] aspect-[4/5] group">
+            <div className="relative w-full max-w-137.5 aspect-4/5 group">
               {/* Main Image */}
               <div className="relative w-full h-full overflow-hidden">
                 <Image
