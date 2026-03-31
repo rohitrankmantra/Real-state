@@ -21,7 +21,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 bg-[#2a2a2e] text-white overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24">
+      <div className="max-w-350 mx-auto px-6 md:px-12 lg:px-24">
         <div className="text-center lg:text-left mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-normal mb-4 leading-tight uppercase tracking-wider">
             PROFESSIONAL REAL ESTATE PROPERTY MANAGEMENT
@@ -75,7 +75,7 @@ export default function About() {
                       activeService.name === service.name ? 'text-[#c5a07c]' : 'text-white/70 hover:text-white'
                     }`}
                   >
-                    <div className="w-8 h-8 flex-shrink-0">
+                    <div className="w-8 h-8 shrink-0">
                       <AnimatePresence>
                         {activeService.name === service.name && (
                           <motion.div initial={{ opacity: 0, width: 0 }} animate={{ opacity: 1, width: 24 }} exit={{ opacity: 0, width: 0 }}>

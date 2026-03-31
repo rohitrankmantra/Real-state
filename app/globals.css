@@ -200,7 +200,7 @@
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-black via-gray-700 to-black;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-black via-gray-700 to-black;
   }
 }
 

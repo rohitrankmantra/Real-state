@@ -11,42 +11,48 @@ const features = [
     icon: Sofa, 
     title: 'SATISFYINGLY', 
     subtitle: 'QUALITY BUILT',
-    displayTitle: 'THE BEST-IN-CLASS BUILDING WORK'
+    displayTitle: 'THE BEST-IN-CLASS BUILDING WORK',
+    description: 'We deliver exceptional quality construction with meticulous attention to every detail, ensuring your property meets the highest standards of durability and excellence.'
   },
   { 
     id: 2,
     icon: Leaf, 
     title: 'ECO-FRIENDLY', 
     subtitle: 'CONSTRUCTION',
-    displayTitle: 'WE OVERSEE COMPLICATED BUILDING PROJECTS'
+    displayTitle: 'WE OVERSEE COMPLICATED BUILDING PROJECTS',
+    description: 'Our sustainable building practices minimize environmental impact while maintaining superior quality and cost efficiency for long-term value.'
   },
   { 
     id: 3,
     icon: Bed, 
     title: 'ADEQUATE INTERIOR', 
     subtitle: 'SPACE',
-    displayTitle: 'BEST DESIGNS & MAXIMUM SPACING'
+    displayTitle: 'BEST DESIGNS & MAXIMUM SPACING',
+    description: 'We optimize interior layouts with innovative designs that maximize usable space, comfort, and functionality for modern living.'
   },
   { 
     id: 4,
     icon: Award, 
     title: 'SUPERIOR QUALITY', 
     subtitle: 'INDOOR',
-    displayTitle: 'LATEST MATERIALS & STYLE CONSTRUCTION'
+    displayTitle: 'LATEST MATERIALS & STYLE CONSTRUCTION',
+    description: 'Premium indoor finishes and materials elevate your property with contemporary style and unmatched quality that stands the test of time.'
   },
   { 
     id: 5,
     icon: HandCoins, 
     title: 'GREAT COST', 
     subtitle: 'EFFECTIVE',
-    displayTitle: 'COST EFFECTIVE QUALITY CONSTRUCTION'
+    displayTitle: 'COST EFFECTIVE QUALITY CONSTRUCTION',
+    description: 'We deliver exceptional value without compromising on quality, providing cost-effective solutions that maximize your investment returns.'
   },
   { 
     id: 6,
     icon: Lightbulb, 
     title: 'ENERGY EFFICIENT', 
     subtitle: 'DESIGN',
-    displayTitle: 'ZERO-ENERGY PASSIVE MODERN BUILDINGS'
+    displayTitle: 'ZERO-ENERGY PASSIVE MODERN BUILDINGS',
+    description: 'Our energy-efficient designs reduce utility costs and environmental footprint while providing optimal comfort and modern amenities.'
   }
 ];
 
@@ -138,11 +144,14 @@ export default function ProjectShowcase() {
                     animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                     exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="bg-[#c5a07c]/90 backdrop-blur-sm w-full h-[85%] rounded-[100%/60%] flex items-center justify-center p-12 text-center border border-white/20 shadow-2xl"
+                    className="bg-black/30 backdrop-blur-sm w-full h-[85%] rounded-[100%/60%] flex flex-col items-center justify-center p-12 text-center border border-white/20 shadow-2xl"
                   >
-                    <h3 className="text-2xl md:text-4xl font-serif font-bold text-white mb-4 leading-tight uppercase tracking-wider">
+                    <h3 className="text-2xl md:text-4xl font-serif font-bold text-white mb-6 leading-tight uppercase tracking-wider">
                       {features[activeIndex].displayTitle}
                     </h3>
+                    <p className="text-sm md:text-base text-white/90 leading-relaxed font-light">
+                      {features[activeIndex].description}
+                    </p>
                   </motion.div>
                 </AnimatePresence>
               </div>

@@ -3,24 +3,45 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { useNavbarScroll } from '@/hooks/useNavbarScroll'
 
 export default function Navbar() {
+  const pathname = usePathname()
   const isScrolled = useNavbarScroll()
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
 
   const navLinks = [
-    { label: 'HOME', href: '#home', id: 'home' },
-    { label: 'ABOUT US', href: '#about', id: 'about' },
-    { label: 'SERVICES', href: '#services', id: 'services' },
-    { label: 'VILLA LIST', href: '#villas', id: 'villas' },
-    { label: 'PROJECTS', href: '#projects', id: 'projects' },
-    { label: 'BLOG', href: '#blog', id: 'blog' },
+    { label: 'HOME', href: '/', id: 'home' },
+    { label: 'ABOUT US', href: '/about', id: 'about' },
+    { label: 'SERVICES', href: '/services', id: 'services' },
+    { label: 'PORTFOLIO', href: '/portfolio', id: 'portfolio' },
+    { label: 'BLOG', href: '/blog', id: 'blog' },
+    { label: 'CONTACT', href: '/contact', id: 'contact' },
   ]
 
-  // Track active section on scroll
+  // Track active section on scroll and page navigation
   useEffect(() => {
+    // First, check if we're on a different page (not home)
+    const currentLink = navLinks.find(link => {
+      if (link.href === '/') {
+        return pathname === '/'
+      }
+      return pathname.startsWith(link.href)
+    })
+
+    if (currentLink) {
+      setActiveSection(currentLink.id)
+    } else {
+      setActiveSection('home')
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    // Only track scroll on the home page
+    if (pathname !== '/') return
+
     const observerOptions = {
       root: null,
       rootMargin: '-50% 0px -50% 0px', // Trigger when section is in middle of viewport
@@ -44,7 +65,7 @@ export default function Navbar() {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   return (
     <nav
@@ -56,7 +77,7 @@ export default function Navbar() {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="max-w-350 mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="flex flex-col items-start leading-none group" aria-label="Mers Holdings LLC Home">
@@ -74,8 +95,8 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
+            {navLinks.slice(0, -1).map((link) => (
+              <Link
                 key={link.label}
                 href={link.href}
                 className={`text-[13px] font-bold tracking-widest transition-all duration-300 relative group py-2 ${
@@ -86,15 +107,16 @@ export default function Navbar() {
                 aria-current={activeSection === link.id ? 'page' : undefined}
               >
                 {link.label}
-                <span className={`absolute bottom-0 left-0 h-[2px] bg-[#c5a07c] transition-all duration-300 ${
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-[#c5a07c] transition-all duration-300 ${
                   activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
                 }`} />
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden lg:flex items-center">
-            <button
+            <Link
+              href="/contact"
               className={`px-8 py-3 uppercase tracking-widest text-[13px] font-bold transition-all duration-500 border-2 ${
                 isScrolled
                   ? 'bg-[#c5a07c] border-[#c5a07c] text-white hover:bg-black hover:border-black'
@@ -103,7 +125,7 @@ export default function Navbar() {
               aria-label="Contact Us"
             >
               CONTACT
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -123,7 +145,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div 
           id="mobile-menu"
-          className={`lg:hidden fixed inset-0 bg-black transition-all duration-500 ease-in-out z-[60] ${
+          className={`lg:hidden fixed inset-0 bg-black transition-all duration-500 ease-in-out z-60 ${
             isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
           }`} 
           style={{ top: '0', height: '100vh' }}
@@ -138,7 +160,7 @@ export default function Navbar() {
               <X size={32} />
             </button>
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className={`text-2xl font-serif font-bold tracking-widest transition-colors ${
@@ -148,7 +170,7 @@ export default function Navbar() {
                 aria-current={activeSection === link.id ? 'page' : undefined}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <button className="bg-[#c5a07c] text-white px-10 py-4 uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all duration-300 mt-8">
               CONTACT

@@ -56,13 +56,13 @@ export default function Hero() {
             className="object-cover scale-110 animate-ken-burns"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/70 to-black/30" />
         </motion.div>
       </AnimatePresence>
 
       {/* Vertical Social Links */}
-      <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col items-center gap-4">
-        <div className="w-[1px] h-16 bg-white/20" />
+      <motion.div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col items-center gap-4">
+        <div className="w-px h-16 bg-white/20" />
         <ul className="flex flex-col gap-4">
           {['FB', 'IN', 'LI', 'TW'].map((social) => (
             <li key={social}>
@@ -72,12 +72,15 @@ export default function Hero() {
             </li>
           ))}
         </ul>
-        <div className="w-[1px] h-16 bg-white/20" />
-      </div>
+        <div className="w-px h-16 bg-white/20" />
+      </motion.div>
 
       {/* Main Content */}
-      <div 
+      <motion.div 
         className="relative h-full flex flex-col justify-center items-start px-8 md:px-20 lg:px-32 z-10"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.1}
         onPanEnd={(e, { offset, velocity }) => {
           if (offset.x < -100 || velocity.x < -500) nextSlide();
           else if (offset.x > 100 || velocity.x > 500) prevSlide();
@@ -101,7 +104,7 @@ export default function Hero() {
             <button className="btn-primary">KNOW MORE</button>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* Slider Navigation */}
       <div className="absolute bottom-8 right-8 z-20 flex items-center gap-4 bg-white/90 backdrop-blur-sm p-3">
@@ -119,7 +122,7 @@ export default function Hero() {
       {/* Scroll Down Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 text-white/60">
         <span className="text-xs tracking-widest vertical-text">SCROLL DOWN</span>
-        <div className="w-[1px] h-12 bg-white/30 animate-pulse" />
+        <div className="w-px h-12 bg-white/30 animate-pulse" />
       </div>
 
       <style jsx global>{`

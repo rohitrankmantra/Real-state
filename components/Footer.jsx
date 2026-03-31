@@ -100,13 +100,31 @@ export default function Footer() {
           <div className="md:text-right flex flex-col md:items-end">
             <h4 className="text-xl font-serif font-bold tracking-widest uppercase text-gray-800 mb-8">LINKS</h4>
             <ul className="space-y-4">
-              {['Home', 'About us & Vision', 'Amenities Facility', 'News & Blogs', 'Faq'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm font-medium text-gray-500 hover:text-[#c5a07c] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
